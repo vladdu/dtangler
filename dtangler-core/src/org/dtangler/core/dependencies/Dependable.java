@@ -1,11 +1,11 @@
-// This product is provided under the terms of EPL (Eclipse Public License) 
+// This product is provided under the terms of EPL (Eclipse Public License)
 // version 1.0.
 //
-// The full license text can be read from: http://www.eclipse.org/org/documents/epl-v10.php 
+// The full license text can be read from: http://www.eclipse.org/org/documents/epl-v10.php
 
 package org.dtangler.core.dependencies;
 
-public class Dependable {
+public class Dependable implements Comparable<Dependable> {
 
 	private final Scope scope;
 	private final String fullyQualifiedName;
@@ -43,8 +43,9 @@ public class Dependable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof Dependable))
+		if (!(obj instanceof Dependable)) {
 			return false;
+		}
 		Dependable other = (Dependable) obj;
 		return scope.equals(other.scope)
 				&& fullyQualifiedName.equals(other.fullyQualifiedName);
@@ -62,5 +63,10 @@ public class Dependable {
 
 	public String getFullyQualifiedName() {
 		return fullyQualifiedName;
+	}
+
+	@Override
+	public int compareTo(Dependable o) {
+		return this.displayName.compareTo(o.displayName);
 	}
 }

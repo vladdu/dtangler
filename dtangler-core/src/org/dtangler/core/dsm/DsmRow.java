@@ -1,7 +1,7 @@
-// This product is provided under the terms of EPL (Eclipse Public License) 
+// This product is provided under the terms of EPL (Eclipse Public License)
 // version 1.0.
 //
-// The full license text can be read from: http://www.eclipse.org/org/documents/epl-v10.php 
+// The full license text can be read from: http://www.eclipse.org/org/documents/epl-v10.php
 
 package org.dtangler.core.dsm;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.dtangler.core.dependencies.Dependable;
 
-public class DsmRow {
+public class DsmRow implements Comparable<DsmRow> {
 
 	private final List<DsmCell> cells;
 	private final Dependable dependee;
@@ -25,5 +25,10 @@ public class DsmRow {
 
 	public Dependable getDependee() {
 		return dependee;
+	}
+
+	@Override
+	public int compareTo(DsmRow o) {
+		return dependee.compareTo(o.dependee);
 	}
 }

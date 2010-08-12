@@ -1,4 +1,4 @@
-//This product is provided under the terms of EPL (Eclipse Public License) 
+//This product is provided under the terms of EPL (Eclipse Public License)
 //version 1.0.
 //
 //The full license text can be read from: http://www.eclipse.org/org/documents/epl-v10.php
@@ -29,6 +29,7 @@ public class SwingDsmView extends JTable implements DsmView {
 				new DependableInfoRowTableCellRenderer());
 		getTableHeader().setDefaultRenderer(
 				new DependableInfoColumnTableCellRenderer());
+		// setAutoCreateRowSorter(true);
 	}
 
 	public JComponent getJComponent() {
@@ -44,15 +45,17 @@ public class SwingDsmView extends JTable implements DsmView {
 	}
 
 	private void setDefaultMenu() {
-		if (popupMenuForHeaderCells != null)
+		if (popupMenuForHeaderCells != null) {
 			this.setComponentPopupMenu(popupMenuForHeaderCells);
+		}
 	}
 
 	public void refreshPopupMenu() {
 		int[] selectedColumns = getSelectedColumns();
 		int[] selectedRows = getSelectedRows();
-		if (selectedColumns == null)
+		if (selectedColumns == null) {
 			return;
+		}
 		for (int col : selectedColumns) {
 			if (col == 0) {
 				this.setComponentPopupMenu(popupMenuForHeaderCells);
@@ -69,8 +72,9 @@ public class SwingDsmView extends JTable implements DsmView {
 				break;
 			}
 		}
-		if (this.getComponentPopupMenu() == null)
+		if (this.getComponentPopupMenu() == null) {
 			setDefaultMenu();
+		}
 	}
 
 	public void setTableModel(TableModel model) {
@@ -80,8 +84,9 @@ public class SwingDsmView extends JTable implements DsmView {
 
 	private void setColumnWidths() {
 		getColumnModel().getColumn(0).setPreferredWidth(300);
-		for (int i = 1; i < getColumnModel().getColumnCount(); i++)
+		for (int i = 1; i < getColumnModel().getColumnCount(); i++) {
 			getColumnModel().getColumn(i).setPreferredWidth(35);
+		}
 	}
 
 	public void addSelectionListener(ListSelectionListener listener) {
