@@ -1,3 +1,12 @@
+This repository is based on the latest available dtangler build, at http://web.sysart.fi/dtangler/
+
+The development at Sysart seems to have stopped and I got permission to publish the code here. Hopefully
+this will let others contribute, because it's a very useful tool.
+
+/Vlad
+
+---------------------------------------------
+
 Development environment:
 
 JDK 1.5.0 
